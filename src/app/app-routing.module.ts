@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { GuestGuard } from '../guards/guest/guest.guard';
+import { UserGuard } from '../guards/user/user.guard';
 
 const routes: Routes = [
   {
@@ -8,10 +10,15 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadChildren: './home/home.module#HomePageModule'
+    path: 'login',
+    loadChildren: './login/login.module#LoginPageModule',
+    canActivate: [GuestGuard]
   },
   {
+    path: 'home',
+    loadChildren: './home/home.module#HomePageModule',
+    canActivate: [UserGuard]
+  },
 ];
 
 @NgModule({
