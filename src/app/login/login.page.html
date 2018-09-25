@@ -1,9 +1,23 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header [title]="'Login'"></app-header>
 
 <ion-content padding>
+  <form [formGroup]="loginForm">
+    <mat-form-field>
+      <input matInput placeholder="Email" formControlName="email">
+      <mat-error *ngIf="email.hasError('required') && email.touched">
+        Email is required
+      </mat-error>
+    </mat-form-field>
 
+    <mat-form-field>
+      <input matInput type="password" placeholder="Mot de passe" formControlName="password">
+      <mat-error *ngIf="password.hasError('required') && password.touched">
+        Password is required
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="accent" class="submit-button" aria-label="LOGIN" (click)="onSubmit()" [disabled]="loginForm.invalid">
+      LOGIN
+    </button>
+  </form>
 </ion-content>
