@@ -1,6 +1,6 @@
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, RouteReuseStrategy, Routes } from '@angular/router';
+import { RouteReuseStrategy } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -16,6 +16,8 @@ import { TokenInterceptor } from '../services/auth/token.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenStorage } from '../services/auth/token.storage';
 
+import { AuthModule } from './auth/auth.module';
+
 export function initUserFactory(authService: AuthService) {
   return () => authService.refreshUser();
 }
@@ -29,7 +31,8 @@ export function initUserFactory(authService: AuthService) {
     FlexLayoutModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    AuthModule,
   ],
   providers: [
     StatusBar,

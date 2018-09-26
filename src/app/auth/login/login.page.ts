@@ -3,8 +3,8 @@ import { LoadingController} from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationRequestModel } from './authenticationRequest.model';
-import { AuthService } from '../../services/auth/auth.service';
-import { TokenStorage } from '../../services/auth/token.storage';
+import { AuthService } from '../../../services/auth/auth.service';
+import { TokenStorage } from '../../../services/auth/token.storage';
 
 @Component({
   selector: 'app-login',
@@ -50,14 +50,12 @@ export class LoginPage implements OnInit {
     this.loginRequest.username = this.loginForm.value.email;
     this.loginRequest.password = this.loginForm.value.password;
 
-    console.log(this.loginRequest);
-
     this.authService.attemptAuth(this.loginRequest)
       .subscribe(data => {
         this.presentLoading().then(() => {
           this.tokenStorage.saveToken(data.token);
           this.router.navigate(['home']);
-        })
+        });
       });
   }
 }

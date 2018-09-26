@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Connexion</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="login">
+    <div class="logo" fxHide.gt-xs>
+      <p>BL</p>
+    </div>
+    <form [formGroup]="loginForm" class="login-form">
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="email">
+        <mat-error *ngIf="email.hasError('required') && email.touched">
+          Email is required
+        </mat-error>
+      </mat-form-field>
+    
+      <mat-form-field>
+        <input matInput type="password" placeholder="Mot de passe" formControlName="password">
+        <mat-error *ngIf="password.hasError('required') && password.touched">
+          Password is required
+        </mat-error>
+      </mat-form-field>
+
+      <div class="remember-forgot-password" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center">
+        <mat-checkbox class="remember-me" aria-label="Remember Me">
+          Remember Me
+        </mat-checkbox>
+      
+        <a class="forgot-password" [routerLink]="'/forgot-password'">
+          Forgot Password?
+        </a>
+      </div>
+
+      <button mat-raised-button color="primary" class="submit-button" aria-label="LOGIN" (click)="onSubmit()" [disabled]="loginForm.invalid">
+          LOGIN
+      </button>
+
+    </form>
+
+    <div class="register-section">
+      <p>Don't have an account yet ?</p>
+      <a [routerLink]="'/auth/register'">
+        Create an account
+      </a>
+    </div>
+  </div>
+</ion-content>
