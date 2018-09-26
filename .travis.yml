@@ -9,11 +9,14 @@ before_install:
 install:
 - echo "Install Step"
 - npm install -g ionic cordova
-- npm install
 
 script:
 - echo "Script Step"
+- npm install
 - npm run lint
+- rm -rf platforms
+- ionic cordova platform add android
+- ionic cordova build browser --prod
 
 after_success:
 - echo "After Success Step"
@@ -25,9 +28,9 @@ before_deploy:
 - echo "Before Deploy Step."
 
 deploy:
-- provider: pages
+  provider: pages
   skip-cleanup: true
-  github_token: $GITHUB_TOKEN
+  github-token: $GITHUB_TOKEN
   keep-history: true
   on:
     branch: master
