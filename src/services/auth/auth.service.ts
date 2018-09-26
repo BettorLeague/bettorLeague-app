@@ -37,7 +37,7 @@ export class AuthService {
     if (this.isLoggedIn()) {
       this.userService.initUser().catch(res => {
         this.logout();
-      })
+      });
     }
   }
 
