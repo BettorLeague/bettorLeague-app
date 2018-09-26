@@ -39,9 +39,9 @@ export class UserService {
 
 
   public initUser() {
-    let promise1 = this.getUser().toPromise().then(res => { this.currentUser = res });
-    let promise2 = this.getUserContests("PUBLIC").toPromise().then(res => { this.currentUserPublicContests = this.currentFilteredPublicContests = res; });
-    let promise3 = this.getUserContests("PRIVATE").toPromise().then(res => { this.currentUserPrivateContests = this.currentFilteredPrivateContests = res; });
+    const promise1 = this.getUser().toPromise().then(res => { this.currentUser = res; });
+    const promise2 = this.getUserContests('PUBLIC').toPromise().then(res => { this.currentUserPublicContests = this.currentFilteredPublicContests = res; });
+    const promise3 = this.getUserContests('PRIVATE').toPromise().then(res => { this.currentUserPrivateContests = this.currentFilteredPrivateContests = res; });
     return Promise.all([promise1, promise2, promise3]);
   }
 }
