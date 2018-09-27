@@ -15,14 +15,45 @@
         background: #039be5;
     }
 
-    .submit-button {
-        margin: 30px 0;
-        width: 60%
+    .login-form {
+        .submit-button {
+            margin: 16px auto;
+            width: 80%
+        }
+
+        mat-form-field {
+            width: 80%;
+        }
+
+        mat-checkbox {
+            margin-bottom: 16px;
+        }
+
+        .remember-forgot-password {
+            flex-direction: column;
+            box-sizing: border-box;
+            display: flex;
+            max-height: 100%;
+            place-content: center space-between;
+            align-items: center;
+
+            .forgot-password {
+                font-size: 13px;
+                font-weight: 500;
+                margin-bottom: 16px;
+            }
+        }
     }
 
-    .login-form {
-        mat-form-field {
-            width: 70%;
+    .register-section {
+        a {
+            font-size: 13px;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        p {
+            margin-bottom: 0;
         }
     }
 }
