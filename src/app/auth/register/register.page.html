@@ -1,9 +1,3 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Inscription</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content padding>
   <div class="register">
     <div class="logo" fxHide.gt-xs>
@@ -15,56 +9,56 @@
     <form class="register-form" [formGroup]="registerForm">
     
       <mat-form-field>
-        <input matInput placeholder="Name" formControlName="name">
-        <mat-error *ngIf="registerFormErrors.name.required">
-          Name is required
+        <input matInput placeholder="Nom d'utilisateur" formControlName="username">
+        <mat-error *ngIf="registerFormErrors.username.required">
+          Entrez un nom d'utilisateur
         </mat-error>
       </mat-form-field>
     
       <mat-form-field>
         <input matInput placeholder="Email" formControlName="email">
         <mat-error *ngIf="registerFormErrors.email.required">
-          Email is required
+          Entrez un email
         </mat-error>
         <mat-error *ngIf="!registerFormErrors.email.required && registerFormErrors.email.email">
-          Please enter a valid email address
+          L'adresse email n'est pas valide
         </mat-error>
       </mat-form-field>
     
       <mat-form-field>
-        <input matInput type="password" placeholder="Password" formControlName="password">
+        <input matInput type="password" placeholder="Mot de passe" formControlName="password">
         <mat-error *ngIf="registerFormErrors.password.required">
-          Password is required
+          Entrez un mot de passe
         </mat-error>
       </mat-form-field>
     
       <mat-form-field>
-        <input matInput type="password" placeholder="Password (Confirm)" formControlName="passwordConfirm">
+        <input matInput type="password" placeholder="Mot de passe (Confirmation)" formControlName="passwordConfirm">
         <mat-error *ngIf="registerFormErrors.passwordConfirm.required">
-          Password confirmation is required
+          Entrez le mot de passe à nouveau
         </mat-error>
         <mat-error *ngIf="registerFormErrors.passwordConfirm.passwordsNotMatch">
-          Passwords must match
+          Les mots de passe entrés ne se correspondent pas
         </mat-error>
       </mat-form-field>
     
       <div class="terms" fxLayout="row" fxLayoutAlign="center start">
-        <mat-checkbox name="terms" aria-label="Accept" required>
-          <span>Accept </span>
+        <mat-checkbox name="terms" aria-label="Accept" color="primary" required>
+          <span>Accepter </span>
         </mat-checkbox>
-        <a [routerLink]="'/confidentialite'">terms and conditions</a>
+        <a [routerLink]="'/confidentialite'">les conditions d'utilisation</a>
       </div>
     
-      <button (click)="onSubmit()" mat-raised-button color="accent" class="submit-button" aria-label="CREATE AN ACCOUNT"
+      <button (click)="onSubmit()" mat-raised-button color="primary" class="submit-button" aria-label="Crée un compte"
         [disabled]="registerForm.invalid">
-        CREATE AN ACCOUNT
+        Crée un compte
       </button>
     
     </form>
     
     <div class="register" fxLayout="column" fxLayoutAlign="center center">
-      <span class="text">Already have an account?</span>
-      <a class="link" [routerLink]="'/auth/login'">Login</a>
+      <span class="text">Vous avez déjà un compte ?</span>
+      <a class="link" [routerLink]="'/auth/login'">Connexion</a>
     </div>
   </div>
 </ion-content>

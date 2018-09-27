@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '../../../services/auth/auth.service';
@@ -19,11 +20,12 @@ export class RegisterPage implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private toastCtrl: ToastController,
   ) {
 
     this.registerFormErrors = {
-      name: {},
+      username: {},
       email: {},
       password: {},
       passwordConfirm: {}
@@ -32,7 +34,7 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      name: ['', Validators.required],
+      username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       passwordConfirm: ['', [Validators.required, confirmPassword]]
@@ -41,6 +43,14 @@ export class RegisterPage implements OnInit {
     this.registerForm.valueChanges.subscribe(() => {
       this.onRegisterFormValuesChanged();
     });
+  }
+
+  async presentToast() {
+    const toast = await this.toastCtrl.create({
+      message: 'Votre compte à été crée',
+      duration: 2000
+    });
+    toast.present();
   }
 
   onRegisterFormValuesChanged() {
@@ -63,12 +73,14 @@ export class RegisterPage implements OnInit {
   onSubmit() {
     this.registerRequest = new SignupRequestModel();
     this.registerRequest.password = this.registerForm.value.password;
-    this.registerRequest.username = this.registerForm.value.name;
+    this.registerRequest.username = this.registerForm.value.username;
     this.registerRequest.email = this.registerForm.value.email;
 
     this.authService.attemptSignUp(this.registerRequest)
-      .subscribe(data => {
-        this.router.navigate(['/auth/login']);
+      .subscribe(() => {
+        this.presentToast().then(() => {
+          this.router.navigate(['/auth/login']);
+        });
       },
         error => {
           // afficher une popup d'erreur
