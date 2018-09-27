@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- "10"
+- stable
 
 before_install:
 - npm install -g ionic cordova
@@ -9,14 +9,14 @@ before_install:
 install:
 - echo "Install Step"
 - npm install -g ionic cordova
+- npm install
 
 script:
 - echo "Script Step"
-- npm install
 - npm run lint
 - rm -rf platforms
 - ionic cordova platform add android
-- ionic cordova build browser --prod
+- ionic cordova build browser --prod --baseHref='/angular-client/'
 
 after_success:
 - echo "After Success Step"
