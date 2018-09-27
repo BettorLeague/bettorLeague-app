@@ -1,4 +1,4 @@
-export class AuthenticationRequestModel{
-  username:string;
-  password:string;
+export class AuthenticationRequestModel {
+  username: string;
+  password: string;
 }
