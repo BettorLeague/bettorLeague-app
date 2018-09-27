@@ -1,0 +1,64 @@
+<ion-content padding>
+  <div class="register">
+    <div class="logo" fxHide.gt-xs>
+      <span>BL</span>
+    </div>
+    
+    <div class="title">CREATE AN ACCOUNT</div>
+    
+    <form class="register-form" [formGroup]="registerForm">
+    
+      <mat-form-field>
+        <input matInput placeholder="Nom d'utilisateur" formControlName="username">
+        <mat-error *ngIf="registerFormErrors.username.required">
+          Entrez un nom d'utilisateur
+        </mat-error>
+      </mat-form-field>
+    
+      <mat-form-field>
+        <input matInput placeholder="Email" formControlName="email">
+        <mat-error *ngIf="registerFormErrors.email.required">
+          Entrez un email
+        </mat-error>
+        <mat-error *ngIf="!registerFormErrors.email.required && registerFormErrors.email.email">
+          L'adresse email n'est pas valide
+        </mat-error>
+      </mat-form-field>
+    
+      <mat-form-field>
+        <input matInput type="password" placeholder="Mot de passe" formControlName="password">
+        <mat-error *ngIf="registerFormErrors.password.required">
+          Entrez un mot de passe
+        </mat-error>
+      </mat-form-field>
+    
+      <mat-form-field>
+        <input matInput type="password" placeholder="Mot de passe (Confirmation)" formControlName="passwordConfirm">
+        <mat-error *ngIf="registerFormErrors.passwordConfirm.required">
+          Entrez le mot de passe à nouveau
+        </mat-error>
+        <mat-error *ngIf="registerFormErrors.passwordConfirm.passwordsNotMatch">
+          Les mots de passe entrés ne se correspondent pas
+        </mat-error>
+      </mat-form-field>
+    
+      <div class="terms" fxLayout="row" fxLayoutAlign="center start">
+        <mat-checkbox name="terms" aria-label="Accept" color="primary" required>
+          <span>Accepter </span>
+        </mat-checkbox>
+        <a [routerLink]="'/confidentialite'">les conditions d'utilisation</a>
+      </div>
+    
+      <button (click)="onSubmit()" mat-raised-button color="primary" class="submit-button" aria-label="Crée un compte"
+        [disabled]="registerForm.invalid">
+        Crée un compte
+      </button>
+    
+    </form>
+    
+    <div class="register" fxLayout="column" fxLayoutAlign="center center">
+      <span class="text">Vous avez déjà un compte ?</span>
+      <a class="link" [routerLink]="'/auth/login'">Connexion</a>
+    </div>
+  </div>
+</ion-content>
