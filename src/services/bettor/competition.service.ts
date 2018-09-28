@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../environments/environment';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-// import { CompetitionModel } from '../../../models/bettor/competition.model';
-import { TeamModel } from '../../../models/bettor/team.model';
+import { TeamModel } from '../../models/bettor/team.model';
 
 @Injectable({
   providedIn: 'root'

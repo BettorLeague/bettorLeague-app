@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ContestService } from './services/contest.service';
+import { ContestService } from '../../services/bettor/contest.service';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { ContestModel } from '../../models/bettor/contest.model';
