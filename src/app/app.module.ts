@@ -10,16 +10,11 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthService } from '../services/auth/auth.service';
 import { TokenInterceptor } from '../services/auth/token.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TokenStorage } from '../services/auth/token.storage';
 
 import { AuthModule } from './auth/auth.module';
-
-export function initUserFactory(authService: AuthService) {
-  return () => authService.refreshUser();
-}
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,12 +31,6 @@ export function initUserFactory(authService: AuthService) {
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initUserFactory,
-      deps: [AuthService],
-      multi: true
-    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
