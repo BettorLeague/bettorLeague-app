@@ -79,7 +79,7 @@ export class RegisterPage implements OnInit {
     this.authService.attemptSignUp(this.registerRequest)
       .subscribe(() => {
         this.presentToast().then(() => {
-          this.router.navigate(['/auth/login']);
+          this.router.navigate(['app']);
         });
       },
         error => {

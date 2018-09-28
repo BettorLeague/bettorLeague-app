@@ -54,7 +54,7 @@ export class LoginPage implements OnInit {
       .subscribe(data => {
         this.presentLoading().then(() => {
           this.tokenStorage.saveToken(data.token);
-          this.router.navigate(['home']);
+          this.router.navigate(['app']);
         });
       });
   }

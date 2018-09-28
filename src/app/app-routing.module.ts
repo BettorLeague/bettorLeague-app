@@ -6,7 +6,7 @@ import { UserGuard } from '../guards/user/user.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'app',
     pathMatch: 'full'
   },
   {
@@ -15,10 +15,10 @@ const routes: Routes = [
     canActivate: [GuestGuard]
   },
   {
-    path: 'home',
-    loadChildren: './home/home.module#HomePageModule',
+    path: 'app',
+    loadChildren: './bettor/bettor.module#BettorPageModule',
     canActivate: [UserGuard]
-  },
+   },
 ];
 
 @NgModule({
