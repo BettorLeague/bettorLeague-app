@@ -14,7 +14,6 @@ export class BettorInitComponent implements OnInit {
   }
 
   toggleLeftSideNav() {
-    this.MenuCtrl.open();
+    this.MenuCtrl.open('main');
   }
-
 }

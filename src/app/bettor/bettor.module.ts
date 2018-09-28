@@ -11,6 +11,8 @@ import { BettorInitComponent } from './bettor-init/bettor-init.component';
 import { UserGuard } from '../../guards/user/user.guard';
 import { LayoutModule } from '@angular/cdk/layout';
 import { LeftComponent } from './sideNavs/left/left.component';
+import { MainMenuHeaderComponent } from './sideNavs/left/mainMenuHeader/main-menu-header.component';
+import { UserContestsComponent } from './sideNavs/left/user-contests/user-contests.component';
 
 
 const routes: Routes = [
@@ -30,6 +32,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     LayoutModule,
   ],
-  declarations: [BettorPage, BettorInitComponent, LeftComponent],
+  declarations: [BettorPage, BettorInitComponent, LeftComponent, MainMenuHeaderComponent, UserContestsComponent],
 })
 export class BettorPageModule {}

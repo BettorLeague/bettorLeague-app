@@ -11,5 +11,4 @@ export class LeftComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
