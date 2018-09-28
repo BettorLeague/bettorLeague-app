@@ -1,7 +1,6 @@
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -28,7 +27,6 @@ export function initUserFactory(authService: AuthService) {
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    FlexLayoutModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,

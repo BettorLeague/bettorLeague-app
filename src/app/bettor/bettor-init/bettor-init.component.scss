@@ -1,0 +1,14 @@
+:host {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+
+  .app-title {
+    font-weight: 500;
+    font-size: 32px;
+  }
+
+  .secondary-text {
+    font-size: 16px;
+  }
+}
