@@ -16,7 +16,7 @@ script:
 - npm run lint
 - rm -rf platforms
 - ionic cordova platform add android
-- ionic cordova build browser --prod --baseHref='/angular-client/'
+- ionic cordova build browser --prod --baseHref='/bettorLeague-app/'
 
 after_success:
 - echo "After Success Step"
