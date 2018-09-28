@@ -33,12 +33,12 @@ export class AuthService {
     return token && token.length > 0;
   }
 
-  refreshUser() {
-    if (this.isLoggedIn()) {
-      this.userService.initUser().catch(res => {
-        this.logout();
-      });
-    }
-  }
+  // refreshUser() {
+  //   if (this.isLoggedIn()) {
+  //     this.userService.initUser().catch(res => {
+  //       this.logout();
+  //     });
+  //   }
+  // }
 
 }
