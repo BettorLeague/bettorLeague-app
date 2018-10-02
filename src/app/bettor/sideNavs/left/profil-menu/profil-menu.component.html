@@ -1,0 +1,45 @@
+<ion-menu side="start" menu-id='profil' swipeGesture='false'>
+  <ion-header>
+    <ion-toolbar>
+      <ion-grid>
+        <ion-row>
+          <ion-button class="backBtn" color="dark" fill="clear" (click)="closeProfil()">
+            <ion-icon name='arrow-back'></ion-icon>
+          </ion-button>
+        </ion-row>
+        <ion-row>
+          <img src="https://www.gravatar.com/avatar/{{user.hash}}?d=identicon" class="avatar" />
+        </ion-row>
+        <ion-row>
+          <ion-text class="profil-name">
+            <h2 color="primary">
+              {{ user.username }}
+            </h2>
+          </ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-button color="warning" class="profil-update">
+            <ion-icon name="create"></ion-icon> 
+            Modifier votre profil
+          </ion-button>
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list inset="true" lines="inset">
+
+      <!-- EMAIL -->
+      <ion-item>
+        <ion-icon slot="start" name="mail"></ion-icon>
+        <ion-label>
+          <h2>Email</h2>
+          <p>{{ user.email }}</p>
+        </ion-label>
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-router-outlet main></ion-router-outlet>

@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { ContestService } from '../bettor/contest.service';
+import { Md5 } from 'ts-md5/dist/md5';
 
 @Injectable({
   providedIn: 'root',
@@ -31,6 +32,7 @@ export class UserService implements Resolve<any> {
         this.getCurrentUser()
       ]).then(
         ([publicContest, privateContest, user]) => {
+          user.hash = Md5.hashStr(user.email);
           this.onPrivateContestUpdated.next(privateContest);
           this.onPublicContestUpdated.next(publicContest);
           this.onUserUpdated.next(user);
