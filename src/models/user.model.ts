@@ -15,4 +15,5 @@ export class UserModel {
     favoriteTeam: TeamModel;
     quote: string;
     level: number;
+    hash: string;
 }
