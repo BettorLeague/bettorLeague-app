@@ -13,6 +13,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { LeftComponent } from './sideNavs/left/left.component';
 import { MainMenuHeaderComponent } from './sideNavs/left/mainMenuHeader/main-menu-header.component';
 import { UserContestsComponent } from './sideNavs/left/user-contests/user-contests.component';
+import { ProfilMenuComponent } from './sideNavs/left/profil-menu/profil-menu.component';
 import { UserService } from '../../services/user/user.service';
 
 
@@ -36,6 +37,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     LayoutModule,
   ],
-  declarations: [BettorPage, BettorInitComponent, LeftComponent, MainMenuHeaderComponent, UserContestsComponent],
+  declarations: [BettorPage, BettorInitComponent, LeftComponent, MainMenuHeaderComponent, UserContestsComponent, ProfilMenuComponent],
 })
 export class BettorPageModule {}

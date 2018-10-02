@@ -8,12 +8,14 @@ import { MenuController } from '@ionic/angular';
 })
 export class BettorInitComponent implements OnInit {
 
-  constructor(private MenuCtrl: MenuController) { }
+  constructor(private menuCtrl: MenuController) { }
 
   ngOnInit() {
   }
 
   toggleLeftSideNav() {
-    this.MenuCtrl.open('main');
+    this.menuCtrl.enable(false, 'profil');
+    this.menuCtrl.enable(true, 'main');
+    this.menuCtrl.toggle('main');
   }
 }

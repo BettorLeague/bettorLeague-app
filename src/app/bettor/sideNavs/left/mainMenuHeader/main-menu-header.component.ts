@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../../services/auth/auth.service';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,6 +16,7 @@ export class MainMenuHeaderComponent implements OnInit {
     private authService: AuthService,
     private loadingCtrl: LoadingController,
     private router: Router,
+    private menuCtrl: MenuController,
   ) {}
 
   ngOnInit() {
@@ -33,6 +34,14 @@ export class MainMenuHeaderComponent implements OnInit {
     this.authService.logout();
     this.presentLoading().then(() => {
       this.router.navigate(['auth/login']);
+    });
+  }
+
+  openProfil() {
+    this.menuCtrl.close('main').then(() => {
+      this.menuCtrl.enable(false, 'main');
+      this.menuCtrl.enable(true, 'profil');
+      this.menuCtrl.toggle('profil');
     });
   }
 
