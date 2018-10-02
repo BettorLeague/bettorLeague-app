@@ -26,7 +26,6 @@ export class ProfilMenuComponent implements OnInit, OnDestroy {
       if (user) {
         this.user = user;
       }
-      console.log(user);
     });
   }
 
