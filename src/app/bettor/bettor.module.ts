@@ -13,6 +13,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { LeftComponent } from './sideNavs/left/left.component';
 import { MainMenuHeaderComponent } from './sideNavs/left/mainMenuHeader/main-menu-header.component';
 import { UserContestsComponent } from './sideNavs/left/user-contests/user-contests.component';
+import { UserService } from '../../services/user/user.service';
 
 
 const routes: Routes = [
@@ -20,6 +21,9 @@ const routes: Routes = [
     path: '',
     component: BettorPage,
     canActivate: [UserGuard],
+    resolve: {
+      userService: UserService
+    }
   }
 ];
 
