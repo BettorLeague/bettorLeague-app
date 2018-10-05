@@ -1,0 +1,14 @@
+:host {
+  .noContestSection {
+    padding: 30px;
+  }
+
+  .contestName {
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .list-md {
+    margin: 0 0 16px;
+  }
+}
