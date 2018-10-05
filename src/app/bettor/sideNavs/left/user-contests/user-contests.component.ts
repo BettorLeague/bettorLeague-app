@@ -3,6 +3,7 @@ import { UserService } from '../../../../../services/user/user.service';
 import { ContestModel } from '../../../../../models/bettor/contest.model';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { ItemSliding } from '@ionic/angular';
 
 @Component({
   selector: 'user-contests',
@@ -24,20 +25,23 @@ export class UserContestsComponent implements OnInit {
     this.userService.onPublicContestUpdated
     .pipe(takeUntil(this.unsubscribeAll))
     .subscribe((contests) => {
-      console.log(contests);
       this.publicContests = contests;
     });
 
     this.userService.onPrivateContestUpdated
     .pipe(takeUntil(this.unsubscribeAll))
     .subscribe((contests) => {
-      console.log(contests);
       this.privateContests = contests;
     });
   }
 
   segmentChanged(ev: any) {
     this.switchContestType = ev.detail.value;
+  }
+
+  quitContest(contestId: string, slidingItem: ItemSliding) {
+    slidingItem.close();
+    this.userService.unSubscribeToContest(contestId);
   }
 
 }
