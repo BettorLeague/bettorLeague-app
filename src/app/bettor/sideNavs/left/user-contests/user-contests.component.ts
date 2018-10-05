@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../../../../services/user/user.service';
+import { ContestModel } from '../../../../../models/bettor/contest.model';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'user-contests',
@@ -7,9 +11,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserContestsComponent implements OnInit {
 
-  constructor() { }
+  publicContests: ContestModel[] = [];
+  privateContests: ContestModel[] = [];
+  private unsubscribeAll: Subject<any>;
+  switchContestType = 'public';
+
+  constructor(private userService: UserService) {
+    this.unsubscribeAll = new Subject();
+  }
 
   ngOnInit() {
+    this.userService.onPublicContestUpdated
+    .pipe(takeUntil(this.unsubscribeAll))
+    .subscribe((contests) => {
+      console.log(contests);
+      this.publicContests = contests;
+    });
+
+    this.userService.onPrivateContestUpdated
+    .pipe(takeUntil(this.unsubscribeAll))
+    .subscribe((contests) => {
+      console.log(contests);
+      this.privateContests = contests;
+    });
+  }
+
+  segmentChanged(ev: any) {
+    this.switchContestType = ev.detail.value;
   }
 
 }
