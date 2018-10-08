@@ -1,10 +1,25 @@
 <ion-menu side="start" menu-id='main' swipeGesture='false'>
   <ion-header>
     <main-menu-header></main-menu-header>
+    <ion-toolbar>
+      <ion-title style="text-align: center">
+        Mes concours
+      </ion-title>
+    </ion-toolbar>
+    <ion-segment (ionChange)="segmentChanged($event)" color="tertiary">
+      <ion-segment-button value="public" checked>
+        <ion-badge color="light">{{ publicContestsLength }}</ion-badge>
+        Public
+      </ion-segment-button>
+      <ion-segment-button value="private">
+        <ion-badge color="light">{{ privateContestsLength }}</ion-badge>
+        Privé
+      </ion-segment-button>
+    </ion-segment>
   </ion-header>
 
   <ion-content>
-    <user-contests></user-contests>
+    <user-contests [switchContestType]='switchContestType' (publicContestLengthEvent)="receivePublicContestsLength($event)" (privateContestLengthEvent)="receivePrivateContestsLength"></user-contests>
   </ion-content>
 </ion-menu>
 

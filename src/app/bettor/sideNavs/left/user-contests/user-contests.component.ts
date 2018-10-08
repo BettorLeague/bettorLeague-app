@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { UserService } from '../../../../../services/user/user.service';
 import { ContestModel } from '../../../../../models/bettor/contest.model';
 import { takeUntil } from 'rxjs/operators';
@@ -15,7 +15,10 @@ export class UserContestsComponent implements OnInit {
   publicContests: ContestModel[] = [];
   privateContests: ContestModel[] = [];
   private unsubscribeAll: Subject<any>;
-  switchContestType = 'public';
+  @Input() switchContestType = 'public';
+  searchText: string;
+  @Output() publicContestLengthEvent = new EventEmitter<number>();
+  @Output() privateContestLengthEvent = new EventEmitter<number>();
 
   constructor(private userService: UserService) {
     this.unsubscribeAll = new Subject();
@@ -26,22 +29,21 @@ export class UserContestsComponent implements OnInit {
     .pipe(takeUntil(this.unsubscribeAll))
     .subscribe((contests) => {
       this.publicContests = contests;
+      this.publicContestLengthEvent.emit(contests.length);
     });
 
     this.userService.onPrivateContestUpdated
     .pipe(takeUntil(this.unsubscribeAll))
     .subscribe((contests) => {
       this.privateContests = contests;
+      this.privateContestLengthEvent.emit(contests.length);
     });
   }
 
-  segmentChanged(ev: any) {
-    this.switchContestType = ev.detail.value;
-  }
-
   quitContest(contestId: string, slidingItem: ItemSliding) {
-    slidingItem.close();
-    this.userService.unSubscribeToContest(contestId);
+    this.userService.unSubscribeToContest(contestId).then(() => {
+      slidingItem.close();
+    });
   }
 
 }

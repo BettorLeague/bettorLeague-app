@@ -1,20 +1,3 @@
-<ion-toolbar>
-  <ion-title style="text-align: center">
-    Mes concours
-  </ion-title>
-</ion-toolbar>
-
-<ion-segment (ionChange)="segmentChanged($event)" color="tertiary">
-  <ion-segment-button value="public" checked>
-    <ion-badge color="light">{{ publicContests.length }}</ion-badge>
-    Public
-  </ion-segment-button>
-  <ion-segment-button value="private">
-    <ion-badge color="light">{{ privateContests.length }}</ion-badge>
-    Privé
-  </ion-segment-button>
-</ion-segment>
-
 <div [ngSwitch]="switchContestType">
   <!-- PUBLIC CONTESTS -->
   <div *ngSwitchCase="'public'">
