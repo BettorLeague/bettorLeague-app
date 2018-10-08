@@ -29,3 +29,13 @@ a {
   text-align: center;
   color: #fff;
 }
+
+.toastSuccess {
+  --background: var(--ion-color-success);
+  --color: var(--ion-color-light);
+}
+
+.toastError {
+  --background: var(--ion-color-danger);
+  --color: var(--ion-color-light);
+}
