@@ -1,0 +1,39 @@
+<ion-grid *ngIf="standing" class="standing">
+  <ion-row align-items-center>
+    <ion-col offset="6" size="1" text-center>
+      J
+    </ion-col>
+    <ion-col size="2" text-center>
+      Buts
+    </ion-col>
+    <ion-col size="1" text-center>
+      Dif.
+    </ion-col>
+    <ion-col size="2" text-center>
+      Pts.
+    </ion-col>
+  </ion-row>
+  <ion-row *ngFor="let team of standing[0].table; let i = index" align-items-center [ngClass]="i%2 == 0 ? 'even' : 'odd'">
+    <ion-col size="1" text-center>
+      {{ team.position}}
+    </ion-col>
+    <ion-col size="1">
+      <app-blason [logo]="team.team.logo" [width]="'20px'" [height]="'20px'"></app-blason>
+    </ion-col>
+    <ion-col size="4">
+      {{ team.team.shortName }}
+    </ion-col>
+    <ion-col size="1" text-center>
+      {{ team.playedGames }}
+    </ion-col>
+    <ion-col size="2" text-center>
+      {{ team.goalsFor }}:{{ team.goalsAgainst}}
+    </ion-col>
+    <ion-col size="1" text-center>
+      {{ team.goalDifference }}
+    </ion-col>
+    <ion-col size="2" text-center class="teamPoints">
+      {{ team.points}}
+    </ion-col>
+  </ion-row>
+</ion-grid>
