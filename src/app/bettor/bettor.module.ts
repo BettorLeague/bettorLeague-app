@@ -16,6 +16,8 @@ import { UserContestsComponent } from './sideNavs/left/user-contests/user-contes
 import { ProfilMenuComponent } from './sideNavs/left/profil-menu/profil-menu.component';
 import { UserService } from '../../services/user/user.service';
 import { BlasonComponent } from './blason/blason.component';
+import { ContestComponent } from './contest/contest.component';
+import { StandingComponent } from './contest/standing/standing.component';
 
 
 const routes: Routes = [
@@ -38,6 +40,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     LayoutModule,
   ],
-  declarations: [BettorPage, BettorInitComponent, LeftComponent, MainMenuHeaderComponent, UserContestsComponent, ProfilMenuComponent, BlasonComponent],
+  declarations: [BettorPage, BettorInitComponent, LeftComponent, MainMenuHeaderComponent, UserContestsComponent, ProfilMenuComponent, BlasonComponent, ContestComponent, StandingComponent],
 })
 export class BettorPageModule {}

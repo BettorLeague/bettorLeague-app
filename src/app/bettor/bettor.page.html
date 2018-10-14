@@ -33,5 +33,9 @@
 <app-left-menu></app-left-menu>
 
 <ion-content>
+  <!-- NO CONTEST SELECTED -->
   <app-bettor-init *ngIf="!selectedContest"></app-bettor-init>
+
+  <!-- CONTEST -->
+  <app-contest *ngIf="selectedContest" [selectedContest]="selectedContest" [selectedCompetition]="selectedCompetition" [activeSegment]="activeSegment"></app-contest>
 </ion-content>

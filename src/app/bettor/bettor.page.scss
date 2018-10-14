@@ -2,4 +2,16 @@
   mat-sidenav-container {
     height: 100%;
   }
+
+  ion-header.header-md::after {
+    display: none;
+  }
+
+  ion-toolbar.contestNavigation {
+    --padding-top: 0;
+    --padding-bottom: 0;
+    --padding-start: 0;
+    --padding-end: 0;
+    --min-height: none;
+  }
 }
