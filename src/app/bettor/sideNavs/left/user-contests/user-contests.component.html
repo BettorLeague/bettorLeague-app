@@ -6,7 +6,7 @@
         <ion-item-sliding *ngFor="let contest of publicContests" #publicContestSliding>
 
           <!-- CONTEST INFORMATION -->
-          <ion-item>
+          <ion-item (click)="accessContest(contest.id, contest.competition.id)">
             <ion-thumbnail slot="start">
               <app-blason style="position: absolute; top: 50%; transform: translateY(-50%)" [width]="'60px'" [height]="'60px'"
                 [logo]="contest.competition.logo"></app-blason>

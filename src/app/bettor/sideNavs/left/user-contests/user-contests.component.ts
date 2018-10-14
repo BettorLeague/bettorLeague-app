@@ -3,7 +3,9 @@ import { UserService } from '../../../../../services/user/user.service';
 import { ContestModel } from '../../../../../models/bettor/contest.model';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { ItemSliding } from '@ionic/angular';
+import { ItemSliding, MenuController } from '@ionic/angular';
+import { ContestService } from '../../../../../services/bettor/contest.service';
+import { CompetitionService } from '../../../../../services/bettor/competition.service';
 
 @Component({
   selector: 'user-contests',
@@ -20,7 +22,12 @@ export class UserContestsComponent implements OnInit {
   @Output() publicContestLengthEvent = new EventEmitter<number>();
   @Output() privateContestLengthEvent = new EventEmitter<number>();
 
-  constructor(private userService: UserService) {
+  constructor(
+    private userService: UserService,
+    private contestService: ContestService,
+    private menuCtrl: MenuController,
+    private competitionService: CompetitionService,
+  ) {
     this.unsubscribeAll = new Subject();
   }
 
@@ -43,6 +50,13 @@ export class UserContestsComponent implements OnInit {
   quitContest(contestId: string, slidingItem: ItemSliding) {
     this.userService.unSubscribeToContest(contestId).then(() => {
       slidingItem.close();
+    });
+  }
+
+  accessContest(contestId: string, competitionId: string) {
+    this.competitionService.selectCompetition(competitionId);
+    this.contestService.selectContest(contestId).then(() => {
+      this.menuCtrl.toggle('main');
     });
   }
 
