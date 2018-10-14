@@ -109,9 +109,9 @@ export class MainMenuHeaderComponent implements OnInit, OnDestroy {
   }
 
   joinContest(contestId: string, contestName: string) {
-    this.userService.subscribeToContest(contestId).then(resp => {
-      this.presentToast(`Vous avez rejoins le concours ${contestName}`);
-    }).catch(error => {
+    this.userService.subscribeToContest(contestId).then(() => {
+      this.presentToast(`Vous avez rejoint le concours ${contestName}`);
+    }).catch(() => {
       this.presentToast('Une erreur s\'est produite', 'error');
     } );
   }
