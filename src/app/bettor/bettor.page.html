@@ -1,3 +1,34 @@
+<ion-header *ngIf="selectedContest">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  
+    <ion-title>
+      <ion-row align-items-center>
+        <app-blason [logo]="selectedContest.contestInfo.competition.logo" [height]="'45px'" [width]="'45px'"></app-blason>
+        {{ selectedContest.contestInfo.caption }}
+      </ion-row>
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar class="contestNavigation">
+    <ion-segment (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="matchs" checked>
+        Matchs
+      </ion-segment-button>
+      <ion-segment-button value="standing">
+        Classement
+      </ion-segment-button>
+      <ion-segment-button value="players">
+        Participants
+      </ion-segment-button>
+      <ion-segment-button value="chat">
+        Classement
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <app-left-menu></app-left-menu>
   <app-bettor-init *ngIf="!selectedContest"></app-bettor-init>
