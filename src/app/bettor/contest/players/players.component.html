@@ -1,0 +1,39 @@
+<ion-grid *ngIf="players" class="table players">
+  <ion-row align-items-center>
+    <ion-col offset="1" size="3" text-center>
+      Joueur
+    </ion-col>
+    <ion-col size="2" text-center>
+      Pts.
+    </ion-col>
+    <ion-col size="2" text-center>
+      Nb.
+    </ion-col>
+    <ion-col size="2" text-center>
+      Bon
+    </ion-col>
+    <ion-col size="2" text-center>
+      Exact
+    </ion-col>
+  </ion-row>
+  <ion-row *ngFor="let player of players; let i = index" align-items-center [ngClass]="i%2 == 0 ? 'even' : 'odd'">
+    <ion-col size="1" text-center>
+      {{ i+1 }}
+    </ion-col>
+    <ion-col size="3" text-center>
+      {{ player.user.username }}
+    </ion-col>
+    <ion-col size="2" text-center>
+      {{ player.points }}
+    </ion-col>
+    <ion-col size="2" text-center>
+      {{ player.totalPronostic }}
+    </ion-col>
+    <ion-col size="2" text-center>
+      {{ player.goodPronostic }}
+    </ion-col>
+    <ion-col size="2" text-center>
+      {{ player.exactPronostic }}
+    </ion-col>
+  </ion-row>
+</ion-grid>
