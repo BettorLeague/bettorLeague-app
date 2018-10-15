@@ -39,3 +39,22 @@ a {
   --background: var(--ion-color-danger);
   --color: var(--ion-color-light);
 }
+
+.table {
+    padding: 0;
+    --color: var(--ion-color-medium-tint);
+
+    ion-row {
+      font-weight: 300;
+      font-size: 12px;
+      padding: 15px 0;
+
+      ion-col.teamPoints {
+        font-weight: 900;
+      }
+    }
+
+    ion-row.even {
+      background: var(--ion-color-light-tint);
+    }
+  }
