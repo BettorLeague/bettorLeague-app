@@ -1,3 +1,4 @@
 <div [ngSwitch]="activeSegment">
   <contest-standing *ngSwitchCase="'standing'" [standing]="competitionStanding"></contest-standing>
+  <contest-players *ngSwitchCase="'players'" [players]="contestPlayer"></contest-players>
 </div>

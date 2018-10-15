@@ -18,6 +18,7 @@ import { UserService } from '../../services/user/user.service';
 import { BlasonComponent } from './blason/blason.component';
 import { ContestComponent } from './contest/contest.component';
 import { StandingComponent } from './contest/standing/standing.component';
+import { PlayersComponent } from './contest/players/players.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     LayoutModule,
   ],
-  declarations: [BettorPage, BettorInitComponent, LeftComponent, MainMenuHeaderComponent, UserContestsComponent, ProfilMenuComponent, BlasonComponent, ContestComponent, StandingComponent],
+  declarations: [BettorPage, BettorInitComponent, LeftComponent, MainMenuHeaderComponent, UserContestsComponent, ProfilMenuComponent, BlasonComponent, ContestComponent, StandingComponent, PlayersComponent],
 })
 export class BettorPageModule {}
