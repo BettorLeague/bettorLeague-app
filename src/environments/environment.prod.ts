@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'http://bettorleague.ovh'
+  baseUrl: 'http://api.bettorleague.ovh'
 };
